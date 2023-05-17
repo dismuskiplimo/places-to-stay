@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search by Type and Location | PlacesToStay</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+   integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+   crossorigin=""/>
+
+   <!-- My CSS -->
+   <link rel="stylesheet" href="./css/style.css">
+
+   <!-- Leaflet JS -->
+   <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+   integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+   crossorigin=""></script>
+</head>
+<body>
+    <p class="text-right" id = "login-status"></p>
+    <nav>
+        <ul>
+            <li>
+                <a href="./">Home</a>
+            </li>
+            
+            <li>
+                <a href="./search-by-location">Search by Location</a>
+            </li>
+
+            <li>
+                <a href="./search-by-type-location">Search by Type & Location</a>
+            </li>
+            
+            <li>
+                <a href="./login">Login</a>
+            </li>
+        </ul>
+    </nav>
+    <h1>Search Accomodation by Type and Location</h1>
+
+    <form id = "search-by-type-location-form" action = "" >
+        <div class="form-group">
+            <label for="type">Type</label>
+            <input type="text" id = "type" required placeholder="type">
+        </div>
+
+        <div class="form-group">
+            <label for="location">Location</label>
+            <input type="text" id = "location" required placeholder="location">
+        </div>
+        
+
+        <button type="submit" class="float-right">Search!</button>
+    </form>
+
+    <div id = "results"></div>
+
+    <div class="modal" id = "modal">
+        <div class="modal-body">
+            <h1>Book Accomodation <span class="close">CLOSE</span></h1>
+
+            <form action="" id = "book-accomodation-form">
+                        
+                <input type="hidden" name="acc_id" id="acc_id" required min="1" value = "">
+
+                <div class="form-group">
+                    <label for="no_of_people">Number of People</label>
+                    <input type="number" name="no_of_people" id="no_of_people" required min="1">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date </label>
+                    <div class = "date-div">
+                        <select name="day" id="day">
+                            <option value="01" selected>01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                        </select>
+
+                        <select name="month" id="month">
+                            <option value="01" selected>January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                            <option value="05">May</option>
+                            <option value="06">June</option>
+                            <option value="07">July</option>
+                            <option value="08">August</option>
+                            <option value="09">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+
+                        <select name="year" id="year">
+                            <option value="22" selected>2022</option>
+                            <option value="23">2023</option>
+                            <option value="24">2024</option>
+                            <option value="25">2025</option>
+                            <option value="26">2026</option>
+                            <option value="27">2027</option>
+                            <option value="28">2028</option>
+                            <option value="29">2029</option>
+                            <option value="30">2030</option>
+                        </select>
+
+                        
+                    </div>
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="card-no">Credit Card Number</label>
+                    <input type="text" name="card_no" id="card-no" required>
+                </div>
+
+                <p class="text-right" id = "response">&nbsp;</p>
+
+                <button type="submit" class="float-right">Book Accomodation</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- My Script -->
+   <script src="./js/script.js" defer></script>
+</body>
+</html>
